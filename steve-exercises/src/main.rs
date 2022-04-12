@@ -2,9 +2,11 @@
 // I've repurposed them to help me get better at the rust language.
 
 
+
 // Exercise 1
 // Define a function my_max() that takes two numbers as arguments 
 // and returns the largest of them. Use the if-then-else construct
+
 fn my_max(num1: i32, num2: i32) -> i32 {
     if num1 > num2 {
         num1
@@ -20,6 +22,32 @@ fn my_max_test_case() {
     println!("{}", my_max(-25, 40));
 }
 
+
+
+
+
+
+// Exercise 2
+// Define a function max_of_three() that takes three numbers as arguments and returns the largest of them.
+
+fn max_of_three(num1: i32, num2: i32, num3: i32) -> i32 {
+    if num1 > num2 && num1 > num3 {
+        num1
+    }
+    else if (num2 > num1 && num2 > num3) {
+        num2
+    }
+    else {
+        num3
+    }
+}
+ 
+fn max_of_three_test_case() {
+    println!("{}",max_of_three(2,4,6));
+    println!("{}",max_of_three(6,2,4));
+    println!("{}",max_of_three(1,9,3));
+}
+
 fn main() {
-    my_max_test_case()
+    max_of_three_test_case()
 }
