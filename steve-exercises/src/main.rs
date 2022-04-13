@@ -1,7 +1,13 @@
 // 46 exercises meant for python assigned by my programming teacher to his old students.
 // I've repurposed them to help me get better at the rust language.
 
-
+// Reusable functions
+fn input() -> String {
+    let mut buffer = String::new();
+    std::io::stdin()
+    .read_line(&mut buffer).unwrap();
+    buffer.trim().to_string()
+}
 
 // Exercise 1
 // Define a function my_max() that takes two numbers as arguments 
@@ -48,6 +54,26 @@ fn max_of_three_test_case() {
     println!("{}",max_of_three(1,9,3));
 }
 
+// Exercise 3
+// Define a function that computes the length of a given list or string.
+
+fn len(word: &str) -> i32 {
+    let mut count = 0;
+    for i in word.chars() {
+        count += 1;
+    }
+    count
+
+}
+
+fn len_test_case() {
+    println!("{}",len("|WAAAAA"));
+    println!("{}",len("    "));
+    println!("{}",len("1234"));
+    println!("{}", len(&input()))
+}
+
+
 fn main() {
-    max_of_three_test_case()
+    len_test_case()   
 }
