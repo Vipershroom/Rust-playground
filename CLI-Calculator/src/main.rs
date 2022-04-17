@@ -18,9 +18,9 @@ fn display_ui_1() {
         let request = input();
         match request.to_lowercase().as_str() {
             "add" => arithmatic::addition(),
-            // "subtract" => arithmatic::subtraction(),
-            // "multi" => arithmatic::multiply(),
-            // "divide" => arithmatic::divide(),
+            "subtract" => arithmatic::subtraction(),
+            "multi" => arithmatic::multiply(),
+            "divide" => arithmatic::divide(),
             // "next" => arithmatic::next(),
             "exit" => {println!("Exiting....");
                       return}
