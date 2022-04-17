@@ -1,6 +1,5 @@
 use crate::global::input;
 
-use crate::arithmatic as other_arithmatic;
 
 mod arithmatic;
 mod global;
@@ -14,7 +13,8 @@ fn display_ui_1() {
 >Division(divide)
 >Interactive mode(Not finished)
 >Next
->Options"
+>Options
+>Exit"
 );
         let request = input();
         match request.as_str() {
