@@ -1,29 +1,29 @@
-use std::io::Read;
+use crate::global::input;
 
-fn input() -> String {
-    let mut buffer = String::new();
-    std::io::stdin()
-    .read_line(&mut buffer).unwrap();
-    buffer.trim().to_string()
-}
+use crate::arithmatic as other_arithmatic;
+
+mod arithmatic;
+mod global;
 
 fn display_ui_1() {
         loop {
-        println!("Options
+        println!("
 
 >Addition(add)
 >Subtraction(subtract)
 >Multiplication(multi)
 >Division(divide)
+>Interactive mode(Not finished)
 >Next
->Options");
+>Options"
+);
         let request = input();
         match request.as_str() {
-            "add" => addition(),
-            "subtract" => subtraction(),
-            "multi" => multiply(),
-            "divide" => divide(),
-            "next" => next(),
+            "add" => arithmatic::addition(),
+            // "subtract" => arithmatic::subtraction(),
+            // "multi" => arithmatic::multiply(),
+            // "divide" => arithmatic::divide(),
+            // "next" => arithmatic::next(),
             _ => println!("Please input a valid option")
         }
     };
