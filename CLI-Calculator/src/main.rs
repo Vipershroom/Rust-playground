@@ -8,7 +8,6 @@ mod global;
 fn display_ui_1() {
         loop {
         println!("
-
 >Addition(add)
 >Subtraction(subtract)
 >Multiplication(multi)
