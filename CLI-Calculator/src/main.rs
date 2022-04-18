@@ -1,6 +1,6 @@
 use crate::global::input;
 
-
+mod display_2;
 mod arithmatic;
 mod global;
 
@@ -21,7 +21,7 @@ fn display_ui_1() {
             "subtract" => arithmatic::subtraction(),
             "multi" => arithmatic::multiply(),
             "divide" => arithmatic::divide(),
-            // "next" => arithmatic::next(),
+            "next" => display_2::display_ui_2(),
             "exit" => {println!("Exiting....");
                       return}
             _ => println!("Please input a valid option")
