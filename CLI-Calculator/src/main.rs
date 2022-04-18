@@ -6,14 +6,14 @@ mod global;
 
 fn display_ui_1() {
         loop {
-        println!(">Addition(add)
->Subtraction(subtract)
->Multiplication(multi)
->Division(divide)
->Next
->Interactive mode(Not finished)
->Options
->Exit"
+        println!("> Addition(add)
+> Subtraction(subtract)
+> Multiplication(multi)
+> Division(divide)
+> Next
+> Interactive mode(Not finished)
+> Options
+> Exit"
 );
         let request = input();
         match request.to_lowercase().as_str() {

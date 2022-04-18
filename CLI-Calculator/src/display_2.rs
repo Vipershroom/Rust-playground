@@ -1,10 +1,9 @@
 pub fn display() {
     loop {
-        println!("
->Square
->Cube
->Square root
->Abs
->Log")
+        println!("> Square
+> Cube
+> Square root
+> Abs
+> Log")
     }
 }
