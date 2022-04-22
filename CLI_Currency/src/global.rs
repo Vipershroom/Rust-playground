@@ -1,4 +1,4 @@
-fn input() -> String  {
+pub fn input() -> String  {
     let mut buff = String::new();
 
     std::io::stdin().

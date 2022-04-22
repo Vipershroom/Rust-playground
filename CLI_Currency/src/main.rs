@@ -1,3 +1,5 @@
+use crate::global::input;
+
 mod global;
 mod currencys;
 
@@ -6,17 +8,23 @@ fn default_currency() {
 }
 
 fn display_screen() {
-    println!("
-Default: USD
+    let mut default = "USD";
+    let m = ["USD", "Japanese", "Russian", "EU", "Brazillian"];
+    loop {
+        println!("
+Default: {}
 >Japanese(Yen)
 >Russian(Ruble)
 >EU(Euro)
 >Brazilian (Real)
->Options");
+>Options
+>Exit", default);
 
-    let m = input();
-    match m.to_lowercase().as_str() {
-        "yen" => yen(),
+        let m = input();
+        match m.to_lowercase().as_str() {
+            "yen" => currencys::yen(),
+            _ => println!("Please enter a valid value")
+        }
     }
 }
 

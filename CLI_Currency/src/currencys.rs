@@ -1,3 +1,3 @@
-yen() {
-
+pub fn yen() {
+    
 }
