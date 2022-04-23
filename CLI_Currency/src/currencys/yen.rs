@@ -30,7 +30,7 @@ fn ruble_to_yen() {
         println!("Please input your ruble amount");
         let inp = num_input();
         let result = inp * 1.66;
-        println!("${} USD is ₽{} ruble", inp, result);
+        println!("₽{} ruble is ¥{} Yen", inp, result);
         println!("Would you like to go again? (Y/n)");
         let yn = input();
         match yn.to_lowercase().as_str() {
@@ -41,7 +41,18 @@ fn ruble_to_yen() {
 }
 
 fn euro_to_yen() {
-
+    loop {
+        println!("Please input your euro amount");
+        let inp = num_input();
+        let result = inp * 138.84;
+        println!("€{} euro is ¥{} Yen", inp, result);
+        println!("Would you like to go again? (Y/n)");
+        let yn = input();
+        match yn.to_lowercase().as_str() {
+            "y" => continue,
+            _ => break
+        }
+    }
 }
 
 fn real_to_yen() {
