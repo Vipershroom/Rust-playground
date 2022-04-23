@@ -60,7 +60,7 @@ fn real_to_ruble() {
         println!("Please input your real amount");
         let inp = num_input();
         let result = inp * 16.12;
-        println!("€{} real is equal to ₽{:.2} ruble", inp, result);
+        println!("R${} real is equal to ₽{:.2} ruble", inp, result);
         println!("Would you like to go again? (Y/n)");
             let yn = input();
             match yn.to_lowercase().as_str() {
