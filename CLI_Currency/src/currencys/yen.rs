@@ -16,6 +16,7 @@ fn usd_to_yen() {
         let inp = num_input();
         let result = inp * 128.47;
         println!("${} USD is ¥{} Yen", inp, result);
+        println!("Would you like to go again? (Y/n)");
         let yn = input();
         match yn.to_lowercase().as_str() {
             "y" => continue,

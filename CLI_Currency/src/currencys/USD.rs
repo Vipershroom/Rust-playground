@@ -61,6 +61,7 @@ fn real_to_usd() {
         let inp = num_input();
         let result = inp * 0.21;
         println!("{} Real is equal to ${:.2} USD", inp, result);
+        println!("Would you like to go again? (Y/n)");
         let yn = input();
         match yn.to_lowercase().as_str() {
             "y" => continue,
