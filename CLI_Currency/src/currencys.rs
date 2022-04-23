@@ -12,7 +12,7 @@ fn yen_to_usd() {
     println!("Please input your yen amount");
     let inp = num_input();
     let result = inp * 0.0078;
-    println!("{} yen is equal to {} usd",inp, result)
+    println!("{} yen is equal to ${:.2} USD",inp, result)
 }
 
 pub fn yen() {

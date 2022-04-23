@@ -14,11 +14,12 @@ pub fn num_input() -> f32 {
         std::io::stdin().
         read_line(&mut buff).unwrap();
 
-        let intBuff: i32 = match buff.trim().parse()  {
-            Ok(input) => input,
-            Err(_) => {println!("Please enter a valid value");
-                      continue}
-        };
-        return intBuff as f32;
+        match buff.trim().parse() {
+            Ok(input) => return input,
+            Err(_) =>  {
+                println!("Please input a valid value");
+                println!("Hint! If you entered a hole number add .0 to the end")
+            }
+        }
     }
 }
