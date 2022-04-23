@@ -1,5 +1,3 @@
-
-
 use crate::global::{input};
 
 mod global;
@@ -35,13 +33,14 @@ fn display_screen() {
         for i in &langlist {
             if i.to_lowercase() != default.to_lowercase() {
                 println!(">{}", i)
-            } 
+            }
         }
-
+        println!(">Options\n>Exit"); 
         let m = input();
         match m.to_lowercase().as_str() {
             "usd" => currencys::usd::usd(&default.to_lowercase()),
             "yen" => currencys::yen::yen(&default.to_lowercase()),
+            "exit"=> return,
             _ => println!("\n Please enter a valid value")
         }
     }
