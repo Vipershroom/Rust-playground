@@ -56,5 +56,16 @@ fn euro_to_yen() {
 }
 
 fn real_to_yen() {
-
+    loop {
+        println!("Please input your real amount");
+        let inp = num_input();
+        let result = inp * 26.77;
+        println!("R${} real is ¥{} Yen", inp, result);
+        println!("Would you like to go again? (Y/n)");
+        let yn = input();
+        match yn.to_lowercase().as_str() {
+            "y" => continue,
+            _ => break
+        }
+    }
 }
