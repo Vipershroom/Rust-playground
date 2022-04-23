@@ -41,7 +41,7 @@ fn display_screen() {
         let m = input();
         match m.to_lowercase().as_str() {
             "usd" => currencys::usd::usd(&default.to_lowercase()),
-            "yen" => currencys::yen::yen(),
+            "yen" => currencys::yen::yen(&default),
             _ => println!("\n Please enter a valid value")
         }
     }
