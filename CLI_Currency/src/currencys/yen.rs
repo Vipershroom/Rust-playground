@@ -1,4 +1,4 @@
-use crate::global::num_input;
+use crate::global::{num_input, input};
 
 pub fn yen(lang: &str) {
     match lang {
@@ -11,7 +11,17 @@ pub fn yen(lang: &str) {
 }
 
 fn usd_to_yen() {
-
+    loop {
+        println!("Please input your USD amount");
+        let inp = num_input();
+        let result = inp * 128.47;
+        println!("${} USD is ¥{} Yen", inp, result);
+        let yn = input();
+        match yn.to_lowercase().as_str() {
+            "y" => continue,
+            _ => break
+        }
+    }
 }
 
 fn ruble_to_yen() {
