@@ -1,4 +1,4 @@
-use crate::global::{input};
+use global::{input};
 
 mod global;
 mod currencys;
