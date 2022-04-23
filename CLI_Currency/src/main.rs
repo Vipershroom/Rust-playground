@@ -31,7 +31,7 @@ fn display_screen() {
     let mut default = default_currency();
     let langlist = vec!["USD", "Yen", "Ruble", "Euro", "Real"];
     loop {
-        println!("\nYour default language is {}", &default);
+        println!("\nYour default currency is {}", &default);
         for i in &langlist {
             if i.to_lowercase() != default.to_lowercase() {
                 println!(">{}", i)
