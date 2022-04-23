@@ -3,7 +3,7 @@ use crate::global::{num_input, input};
 pub fn ruble(lang: &str) {
     match lang {
         "usd" => usd_to_ruble(),
-        "yen" => yen_to_usd(),
+        "yen" => yen_to_ruble(),
         "euro" => euro_to_ruble(),
         "real" => real_to_ruble(),
         _ => println!("This should never be hit")
@@ -12,7 +12,7 @@ pub fn ruble(lang: &str) {
 
 fn usd_to_ruble() {
     loop 
-    {    println!("Please input your ruble amount");
+    {    println!("Please input your USD amount");
         let inp = num_input();
         let result = inp * 0.013;
         println!("${} USD is equal to ₽{:.2} ruble", inp, result);
@@ -25,8 +25,19 @@ fn usd_to_ruble() {
         }
 }
 
-fn yen_to_usd() {
-
+fn yen_to_ruble() {
+    loop {
+        println!("Please input your yen amount");
+        let inp = num_input();
+        let result = inp * 0.60;
+        println!("{} yen is qual to ₽{:.2} ruble", inp, result);
+        println!("Would you like to go again? (Y/n)");
+            let yn = input();
+            match yn.to_lowercase().as_str() {
+                "y" => continue,
+                _ => break
+            }
+    }
 }
 
 fn euro_to_ruble() {
