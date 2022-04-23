@@ -1,4 +1,4 @@
-use crate::global::num_input;
+use crate::global::{num_input,input};
 
 pub fn usd(lang: &str) {
     let curLang = vec!["Yen", "Ruble", "Euro", "Real"];
@@ -12,22 +12,46 @@ pub fn usd(lang: &str) {
 }
 
 fn yen_to_usd() {
-    println!("Please input your yen amount");
-    let inp = num_input();
-    let result = inp * 0.0078;
-    println!("{} yen is equal to ${:.2} USD",inp, result)
+    loop {
+        println!("Please input your yen amount");
+        let inp = num_input();
+        let result = inp * 0.0078;
+        println!("{} yen is equal to ${:.2} USD",inp, result);
+        println!("Would you like to go again? (Y/n)");
+        let yn = input();
+        match yn.to_lowercase().as_str() {
+            "y" => continue,
+            _ => break
+        }
+    }
 }
 
 fn ruble_to_usd() {
-    println!("Please input your ruble amount");
-    let inp = num_input();
-    let result = inp * 0.013;
-    println!("{} ruble is equal to ${:.2} USD", inp, result)
+    loop 
+    {    println!("Please input your ruble amount");
+        let inp = num_input();
+        let result = inp * 0.013;
+        println!("{} ruble is equal to ${:.2} USD", inp, result);
+        println!("Would you like to go again? (Y/n)");
+            let yn = input();
+            match yn.to_lowercase().as_str() {
+                "y" => continue,
+                _ => break
+            }
+        }
 }
 
 fn euro_to_usd() {
-    println!("Please input your euro amount");
-    let inp = num_input();
-    let result = inp * 1.08;
-    println!("{} Euro is equal to ${:.2}", inp, result)
+    loop 
+    {    println!("Please input your euro amount");
+        let inp = num_input();
+        let result = inp * 1.08;
+        println!("{} Euro is equal to ${:.2}", inp, result);
+        println!("Would you like to go again? (Y/n)");
+            let yn = input();
+            match yn.to_lowercase().as_str() {
+                "y" => continue,
+                _ => break
+            }
+    }
 }
