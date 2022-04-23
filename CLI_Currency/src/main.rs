@@ -1,8 +1,6 @@
 
 
-use std::{collections::HashMap};
-
-use crate::global::{input, num_input};
+use crate::global::{input};
 
 mod global;
 mod currencys;
@@ -42,8 +40,8 @@ fn display_screen() {
 
         let m = input();
         match m.to_lowercase().as_str() {
-            "usd" => currencys::usd(&default.to_lowercase()),
-            "yen" => currencys::yen(),
+            "usd" => currencys::usd::usd(&default.to_lowercase()),
+            "yen" => currencys::yen::yen(),
             _ => println!("\n Please enter a valid value")
         }
     }
