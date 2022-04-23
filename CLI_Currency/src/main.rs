@@ -6,7 +6,7 @@ mod currencys;
 fn default_currency() -> String{
     loop {
         println!("Please enter your default currency");
-        let m = vec!["USD", "Yen", "Ruble", "Euro", "Real"];
+        let m = ["USD", "Yen", "Ruble", "Euro", "Real"];
         for i in &m {
             println!(">{i}");
         }
