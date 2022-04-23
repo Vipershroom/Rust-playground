@@ -1,7 +1,6 @@
 use crate::global::{num_input,input};
 
 pub fn usd(lang: &str) {
-    let curLang = vec!["Yen", "Ruble", "Euro", "Real"];
     match lang {
         "yen" => yen_to_usd(),
         "ruble" => ruble_to_usd(),
