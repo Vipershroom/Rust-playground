@@ -35,13 +35,17 @@ fn display_screen() {
                 println!(">{}", i)
             }
         }
-        println!(">Options\n>Exit"); 
+        println!(">Change Language(cl)\n>Exit"); 
         let m = input();
         match m.to_lowercase().as_str() {
             "usd" => currencys::usd::usd(&default.to_lowercase()),
             "yen" => currencys::yen::yen(&default.to_lowercase()),
             "ruble" => currencys::ruble::ruble(&default.to_lowercase()),
             "euro" => currencys::euro::euro(&default.to_lowercase()),
+            "cl" => {
+                default = default_currency();
+                continue;
+            }
             "exit"=> return,
             _ => println!("\nPlease enter a valid value")
         }
