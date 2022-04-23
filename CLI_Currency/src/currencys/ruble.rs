@@ -6,6 +6,7 @@ pub fn ruble(lang: &str) {
         "yen" => yen_to_ruble(),
         "euro" => euro_to_ruble(),
         "real" => real_to_ruble(),
+        "ruble" => println!("Ok, funny man"),
         _ => println!("This should never be hit")
     }
 }
