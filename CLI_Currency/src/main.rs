@@ -41,7 +41,7 @@ fn display_screen() {
             "usd" => currencys::usd::usd(&default.to_lowercase()),
             "yen" => currencys::yen::yen(&default.to_lowercase()),
             "exit"=> return,
-            _ => println!("\n Please enter a valid value")
+            _ => println!("\nPlease enter a valid value")
         }
     }
 }
