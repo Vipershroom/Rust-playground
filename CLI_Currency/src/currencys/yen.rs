@@ -26,7 +26,18 @@ fn usd_to_yen() {
 }
 
 fn ruble_to_yen() {
-
+    loop {
+        println!("Please input your ruble amount");
+        let inp = num_input();
+        let result = inp * 1.66;
+        println!("${} USD is ₽{} ruble", inp, result);
+        println!("Would you like to go again? (Y/n)");
+        let yn = input();
+        match yn.to_lowercase().as_str() {
+            "y" => continue,
+            _ => break
+        }
+    }
 }
 
 fn euro_to_yen() {
