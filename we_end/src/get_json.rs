@@ -20,6 +20,15 @@ pub fn check_prev() {
         }
         println!("This is your H:Drive correct? (Y/n)");
         println!("\"H:\\2021_2022\"");
+        let n = input();
+        match n.to_lowercase().as_str() {
+            "y" => write_json(&dir),
+            _ => {
+                println!("Please write your directory below");
+                let dir = input();
+                write_json(&dir)
+            }
+        }
 
 }
 
@@ -27,4 +36,4 @@ fn create_json() {
     input();
 }
 
-fn write_json() {}
+fn write_json(dir: &str) {}
