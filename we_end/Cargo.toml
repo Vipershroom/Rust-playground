@@ -1,5 +1,5 @@
 [package]
-name = "arch_test"
+name = "we_end"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,3 +7,5 @@ edition = "2021"
 
 [dependencies]
 chrono = "0.4.19"
+fs_extra = "1.2.0"
+serde_json = "1.0.79"
