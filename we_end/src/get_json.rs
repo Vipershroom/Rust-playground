@@ -33,7 +33,14 @@ pub fn check_prev() {
 }
 
 fn create_json() {
-    input();
+    let f = File::create("settings.json");
+
+    match f {
+        Ok(file) => println!("Success"),
+        Err(err) => println!("There was an error: {}", err),
+    };
 }
 
-fn write_json(dir: &str) {}
+fn write_json(dir: &str) {
+    println!("I was called")
+}
