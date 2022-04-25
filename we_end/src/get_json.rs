@@ -4,7 +4,7 @@ use std::io::ErrorKind;
 use crate::global::input;
 
 pub fn check_prev() {
-    let dir = String::new();
+    
     loop {
             let j = File::open("settings.json");
 
@@ -18,9 +18,21 @@ pub fn check_prev() {
                 }
             };
         }
-        println!("This is your H:Drive correct? (Y/n)");
-        println!("\"H:\\2021_2022\"");
-        let n = input();
+        
+
+}
+
+fn create_json() {
+    let f = File::create("settings.json");
+    let dir = String::new();
+    
+    match f {
+        Ok(file) => println!("settings.json was created succesfully"),
+        Err(err) => println!("There was an error: {}", err),
+    };
+    println!("This is your H:Drive correct? (Y/n)");
+    println!("\"H:\\2021_2022\"");
+    let n = input();
         match n.to_lowercase().as_str() {
             "y" => write_json(&dir),
             _ => {
@@ -29,16 +41,6 @@ pub fn check_prev() {
                 write_json(&dir)
             }
         }
-
-}
-
-fn create_json() {
-    let f = File::create("settings.json");
-
-    match f {
-        Ok(file) => println!("settings.json was created succesfully"),
-        Err(err) => println!("There was an error: {}", err),
-    };
 }
 
 fn write_json(dir: &str) {
