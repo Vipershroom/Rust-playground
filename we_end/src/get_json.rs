@@ -36,7 +36,7 @@ fn create_json() {
     let f = File::create("settings.json");
 
     match f {
-        Ok(file) => println!("Success"),
+        Ok(file) => println!("settings.json was created succesfully"),
         Err(err) => println!("There was an error: {}", err),
     };
 }
