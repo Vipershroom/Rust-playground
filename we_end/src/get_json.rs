@@ -1,6 +1,7 @@
 use serde_json::json;
 use std::fs::File;
-use std::io::ErrorKind;
+use std::fs;
+use std::io::{ErrorKind, Write};
 use crate::global::input;
 
 pub fn check_prev() {
@@ -24,8 +25,8 @@ pub fn check_prev() {
 
 fn create_json() {
     let f = File::create("settings.json");
-    let dir = String::new();
-    
+    let dir = String::from("H:\\\\2021_2022\\\\");
+
     match f {
         Ok(file) => println!("settings.json was created succesfully"),
         Err(err) => println!("There was an error: {}", err),
@@ -37,6 +38,8 @@ fn create_json() {
             "y" => write_json(&dir),
             _ => {
                 println!("Please write your directory below");
+                println!("If you are on windows please add another \\ to your directorys");
+                println!("Example: H:\\\\2021_2022\\\\");
                 let dir = input();
                 write_json(&dir)
             }
@@ -44,5 +47,10 @@ fn create_json() {
 }
 
 fn write_json(dir: &str) {
-    println!("I was called")
+    let write_val = format!(r#"
+    {{
+        "directory": "{}"
+    }}
+    "#, dir);
+    fs::write("settings.json", write_val).expect("Unable to write to file")
 }
