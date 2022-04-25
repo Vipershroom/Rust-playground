@@ -1,9 +1,7 @@
-fn input() -> String {
-    let buff = String::new();
+pub fn input() -> String {
+    let mut buff = String::new();
 
     std::io::stdin().read_line(&mut buff).unwrap();
 
-    match buff {
-        
-    }
+    buff.trim().to_string()
 }
