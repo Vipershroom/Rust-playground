@@ -4,13 +4,18 @@ use std::fs;
 use std::io::{ErrorKind, Write};
 use crate::global::input;
 
+
+
 pub fn check_prev() {
     
     loop {
             let j = File::open("settings.json");
 
             match j {
-                Ok(file) => {file; break;},
+                Ok(file) => {
+                    file; 
+                    println!("settings.json found!");
+                    break;},
                 Err(error) => match error.kind() {
                     ErrorKind::NotFound => {
                         create_json();
