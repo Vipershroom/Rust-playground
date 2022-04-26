@@ -99,7 +99,6 @@ fn get_day() -> u32 {
 fn get_year() -> u32 {
     let now = Utc::now();
     let year = now.format("%Y").to_string();
-    println!("{}", year);
     match year.parse() {
         Ok(inp) => return inp,
         Err(_) => panic!("Could not parse year")
