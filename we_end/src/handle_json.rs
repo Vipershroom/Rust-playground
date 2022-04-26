@@ -7,7 +7,6 @@ use crate::global::input;
 
 
 pub fn check_prev() {
-    
     loop {
             let j = File::open("settings.json");
 
