@@ -1,5 +1,3 @@
-
-
 mod handle_json;
 mod global;
 
