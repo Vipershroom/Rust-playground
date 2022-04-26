@@ -89,7 +89,7 @@ fn get_month() -> u32 {
 fn get_day() -> u32 {
     let now = Utc::now();
     let today = now.format("%e").to_string();
-    let today = match today.parse() {
+    match today.parse() {
         Ok(inp) => return inp,
         Err(_) => panic!("Could not parse todays date number")
     };
@@ -99,7 +99,7 @@ fn get_year() -> u32 {
     let now = Utc::now();
     let year = now.format("%Y").to_string();
     println!("{}", year);
-    let year = match year.parse() {
+    match year.parse() {
         Ok(inp) => return inp,
         Err(_) => panic!("Could not parse year")
     };
