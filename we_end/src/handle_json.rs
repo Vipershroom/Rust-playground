@@ -1,7 +1,7 @@
 use serde_json::Value;
 use std::fs::File;
 use std::fs;
-use std::io::{ErrorKind, Write, Read};
+use std::io::{ErrorKind, Read};
 use crate::global::input;
 
 
@@ -15,7 +15,7 @@ pub fn check_prev() {
             let j = File::open("settings.json");
 
             match j {
-                Ok(file) => { 
+                Ok(_file) => { 
                     println!("settings.json found!");
                     break;},
                 Err(error) => match error.kind() {
@@ -39,7 +39,7 @@ fn create_json() {
     let dir = String::from("H:\\\\2021_2022\\\\");
 
     match f {
-        Ok(file) => println!("settings.json was created succesfully"),
+        Ok(_file) => println!("settings.json was created succesfully"),
         Err(err) => println!("There was an error: {}", err),
     };
     println!("This is your H:Drive correct? (Y/n)");
