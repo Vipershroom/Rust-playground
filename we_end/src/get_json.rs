@@ -12,8 +12,7 @@ pub fn check_prev() {
             let j = File::open("settings.json");
 
             match j {
-                Ok(file) => {
-                    file; 
+                Ok(file) => { 
                     println!("settings.json found!");
                     break;},
                 Err(error) => match error.kind() {
@@ -52,10 +51,9 @@ fn create_json() {
 }
 
 fn write_json(dir: &str) {
-    let write_val = format!(r#"
-    {{
-        "directory": "{}"
-    }}
+    let write_val = format!(r#"{{
+    "directory": "{}"
+}}
     "#, dir);
     fs::write("settings.json", write_val).expect("Unable to write to file")
 }
