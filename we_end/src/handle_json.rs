@@ -56,3 +56,5 @@ fn write_json(dir: &str) {
     "#, dir);
     fs::write("settings.json", write_val).expect("Unable to write to file")
 }
+
+fn read_json() {}
