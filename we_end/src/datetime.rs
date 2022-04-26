@@ -23,7 +23,7 @@ struct Months {
     december: u32,
 }
 
-pub fn current_weekday() {
+fn current_weekday() -> u32 {
 
 
     let weekdays = Weekdays {
@@ -46,13 +46,11 @@ pub fn current_weekday() {
         "Fri" => weekdays.friday,
         _ => panic!("Weekday not found")
     };
-
-    process_days(&today)
+    today 
 }
 
-pub fn get_month() -> u32 {
+fn get_month() -> u32 {
     let now = Utc::now();
-    let today = now.format("%b");
     let months = Months {
         january: 1,
         february: 2,
@@ -88,11 +86,39 @@ pub fn get_month() -> u32 {
     current_month
 }
 
-pub fn get_day() -> u32 {
+fn get_day() -> u32 {
     let now = Utc::now();
-
-    
-    1
+    let today = now.format("%e").to_string();
+    let today = match today.parse() {
+        Ok(inp) => return inp,
+        Err(_) => panic!("Could not parse todays date number")
+    };
 }
 
-fn process_days(today: &u32) {}
+fn get_year() -> u32 {
+    let now = Utc::now();
+    let year = now.format("%Y").to_string();
+    println!("{}", year);
+    let year = match year.parse() {
+        Ok(inp) => return inp,
+        Err(_) => panic!("Could not parse year")
+    };
+}
+
+pub fn process_days() -> String {
+    let weekday = current_weekday();
+    let month = get_month();
+    let year = get_year();
+    let mut day = get_day();
+
+    match weekday {
+        5 => {day += 4},
+        4 => {day += 3},
+        3 => {day += 2},
+        2 => {day += 1},
+        1 => {todo!()},
+        _ => panic!("HOW?!?")
+    }
+    let folder_date = format!("WE_{}_{}_{}",month, day, year );
+    folder_date
+}
