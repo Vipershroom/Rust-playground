@@ -36,7 +36,7 @@ fn current_weekday() -> u32 {
 
 
     let now = Utc::now();
-    let today = (now.format("%a").to_string());
+    let today = now.format("%a").to_string();
     
     let today = match today.as_str() {
         "Mon" => weekdays.monday,
@@ -46,6 +46,7 @@ fn current_weekday() -> u32 {
         "Fri" => weekdays.friday,
         _ => panic!("Weekday not found")
     };
+    
     today 
 }
 
@@ -120,5 +121,6 @@ pub fn process_days() -> String {
         _ => panic!("HOW?!?")
     }
     let folder_date = format!("WE_{}_{}_{}",month, day, year );
+
     folder_date
 }

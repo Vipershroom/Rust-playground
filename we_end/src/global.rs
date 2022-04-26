@@ -3,5 +3,5 @@ pub fn input() -> String {
 
     std::io::stdin().read_line(&mut buff).unwrap();
 
-    buff.trim().to_string()
+    buff.trim().to_string() 
 }
