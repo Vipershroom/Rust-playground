@@ -22,7 +22,11 @@ pub fn check_prev() {
                     ErrorKind::NotFound => {
                         create_json();
                     },
-                    other_error => panic!("Their was an error {:?}", other_error)
+                    other_error => {
+                        println!("Failure to check whether settings.json exists.\n Press enter to quit");
+                        input();
+                        panic!("Failure to check whether settings.json exists.\n Press enter to quit")
+                    }
                 }
             };
         }
@@ -40,7 +44,12 @@ fn create_json() {
 
     match f {
         Ok(_file) => println!("settings.json was created succesfully"),
-        Err(err) => println!("There was an error: {}", err),
+        Err(err) => {
+            println!("There was a problem creating settings.json");
+            println!("Press enter to quit");
+            input();
+            panic!("Program exited due failure to create settings.json")
+        },
     };
     println!("This is your H:Drive correct? (Y/n)");
     println!("\"H:\\2021_2022\"");
