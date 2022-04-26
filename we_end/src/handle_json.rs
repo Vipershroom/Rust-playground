@@ -5,6 +5,10 @@ use std::io::{ErrorKind, Write};
 use crate::global::input;
 
 
+// Simple check needed to check if there 
+// is a settings.json
+// if a settings.json is found it skips
+// if not it will call the create_json function
 
 pub fn check_prev() {
     loop {
@@ -25,6 +29,10 @@ pub fn check_prev() {
         
 
 }
+
+// Handles the creation of the json file
+// In the case where a settings.json is not present
+// This code will run to create one.
 
 fn create_json() {
     let f = File::create("settings.json");
@@ -48,6 +56,10 @@ fn create_json() {
             }
         }
 }
+
+// Needed to on creation of a settings.json
+// to fill in the directory for the program
+// to know where to place the files.
 
 fn write_json(dir: &str) {
     let write_val = format!(r#"{{
