@@ -1,7 +1,7 @@
-use serde_json::json;
+use serde_json::Value;
 use std::fs::File;
 use std::fs;
-use std::io::{ErrorKind, Write};
+use std::io::{ErrorKind, Write, Read};
 use crate::global::input;
 
 
@@ -69,4 +69,13 @@ fn write_json(dir: &str) {
     fs::write("settings.json", write_val).expect("Unable to write to file")
 }
 
-fn read_json() {}
+
+
+pub fn read_json() -> String {
+    let mut f = File::open("settings.json").expect("Failed to read settings.json");
+    let mut json_contents = String::new();
+    f.read_to_string(&mut json_contents).expect("Failed to read file");
+    let contents = serde_json::from_str::<Value>(&json_contents).unwrap();
+    let dir_string = contents["directory"].as_str().unwrap();
+    dir_string.to_string()
+}
