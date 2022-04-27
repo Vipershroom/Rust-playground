@@ -1,4 +1,5 @@
 use chrono::{Utc};
+use crate::global::input;
 
 struct Weekdays {
     monday: u32,
@@ -44,7 +45,11 @@ fn current_weekday() -> u32 {
         "Wed" => weekdays.wednesday,
         "Thu" => weekdays.thursday,
         "Fri" => weekdays.friday,
-        _ => panic!("Weekday not found")
+        _ => {
+            println!("Program does not work on weekend\nPress enter to quit");
+            input();
+            panic!("Program does not work on weekend")
+        }
     };
     
     today 
@@ -81,7 +86,11 @@ fn get_month() -> u32 {
         "Oct" => months.october,
         "Nov" => months.november,
         "Dec" => months.december,
-        _ => panic!("Couldn't get month")
+        _ => {
+            println!("Couldn't parse month\nPress enter to quit");
+            input();
+            panic!("Couldn't parse month")
+        }
     };
     
     current_month
@@ -91,18 +100,26 @@ fn get_day() -> u32 {
     let now = Utc::now();
     let today = now.format("%e").to_string();
     match today.parse() {
-        Ok(inp) => return inp,
-        Err(_) => panic!("Could not parse todays date number")
-    };
+        Ok(inp) => inp,
+        Err(_) => {
+            println!("Couldn't parse todays date\nPress enter to quit");
+            input();
+            panic!("Could not parse todays date number")
+        }
+    }
 }
 
 fn get_year() -> u32 {
     let now = Utc::now();
     let year = now.format("%Y").to_string();
     match year.parse() {
-        Ok(inp) => return inp,
-        Err(_) => panic!("Could not parse year")
-    };
+        Ok(inp) => inp,
+        Err(_) => {
+            println!("Could not parse year\nPress enter to quit");
+            input();
+            panic!("Could not parse year")
+        }
+    }
 }
 
 pub fn process_days() -> String {
@@ -117,7 +134,11 @@ pub fn process_days() -> String {
         3 => {day += 2},
         2 => {day += 1},
         1 => {todo!()},
-        _ => panic!("HOW?!?")
+        _ => {
+            println!("Error processing days\nPress enter to quit");
+            input();
+            panic!("Error processing days")
+        }
     }
     let folder_date = format!("WE_{}_{}_{}",month, day, year );
 

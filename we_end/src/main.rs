@@ -12,4 +12,5 @@ fn main() {
     let day = datetime::process_days();
     file::handle_file(directory, day);
     println!("Week end folder created. Have a nice and productive week! :)")
+    global::input();
 }

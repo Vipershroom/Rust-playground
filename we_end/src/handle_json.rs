@@ -75,13 +75,27 @@ fn write_json(dir: &str) {
     "directory": "{}"
 }}
     "#, dir);
-    fs::write("settings.json", write_val).expect("Unable to write to file")
+    match fs::write("settings.json", write_val) {
+        Ok(write) => write,
+        Err(_) => {
+            println!("Error writing to file\nPress enter to exit");
+            panic!("Error writing to file")
+        }
+    }
 }
 
 
 
 pub fn read_json() -> String {
-    let mut f = File::open("settings.json").expect("Failed to read settings.json");
+    let mut f = match File::open("settings.json") {
+        Ok(read) => read,
+        Err(_) => {
+            println!("Failed to read settings.json\nPress enter to quit");
+            input();
+            panic!("Failed to read settings.json")
+        }
+    };
+
     let mut json_contents = String::new();
     f.read_to_string(&mut json_contents).expect("Failed to read file");
     let contents = serde_json::from_str::<Value>(&json_contents).unwrap();
