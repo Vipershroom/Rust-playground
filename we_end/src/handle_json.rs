@@ -22,7 +22,7 @@ pub fn check_prev() {
                     ErrorKind::NotFound => {
                         create_json();
                     },
-                    other_error => {
+                    _other_error => {
                         println!("Failure to check whether settings.json exists.\n Press enter to quit");
                         input();
                         panic!("Failure to check whether settings.json exists.\n Press enter to quit")
@@ -44,7 +44,7 @@ fn create_json() {
 
     match f {
         Ok(_file) => println!("settings.json was created succesfully"),
-        Err(err) => {
+        Err(_err) => {
             println!("There was a problem creating settings.json");
             println!("Press enter to quit");
             input();
