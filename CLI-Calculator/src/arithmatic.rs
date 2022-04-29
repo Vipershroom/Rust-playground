@@ -47,7 +47,6 @@ pub fn multiply() {
         let yn = input();
         match yn.to_lowercase().as_str() {
             "y" => continue,
-            "Y" => continue,
             _ => return,
         }
     }
@@ -65,7 +64,6 @@ pub fn divide() {
         let yn = input();
         match yn.to_lowercase().as_str() {
             "y" => continue,
-            "Y" => continue,
             _ => return,
         }
     }
