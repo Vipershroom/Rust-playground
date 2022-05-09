@@ -1,4 +1,4 @@
-use chrono::{Utc};
+use chrono::{Utc, Local, Datelike};
 use crate::global::input;
 
 struct Weekdays {
@@ -99,7 +99,7 @@ fn get_month() -> u32 {
 fn get_day() -> u32 {
     let now = Utc::now();
     let today = now.format("%e").to_string();
-    match today.parse() {
+    match today.trim().parse() {
         Ok(inp) => inp,
         Err(_) => {
             println!("Couldn't parse todays date\nPress enter to quit");
