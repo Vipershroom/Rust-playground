@@ -1,4 +1,4 @@
-use chrono::{Utc, Local, Datelike};
+use chrono::{Utc, Local, Datelike, Month};
 use crate::global::input;
 
 struct Weekdays {
@@ -9,19 +9,19 @@ struct Weekdays {
     friday: u32,
 }
 
-struct Months {
-    january: u32,
-    february: u32,
-    march: u32,
-    april: u32,
-    may: u32,
-    june: u32,
-    july: u32,
-    august: u32,
-    september: u32,
-    october: u32,
-    november: u32,
-    december: u32,
+enum Months {
+    January(u32),
+    February(u32),
+    March(u32),
+    April(u32),
+    May(u32),
+    June(u32),
+    July(u32),
+    August(u32),
+    September(u32),
+    October(u32),
+    November(u32),
+    December(u32),
 }
 
 fn current_weekday() -> u32 {
@@ -57,35 +57,21 @@ fn current_weekday() -> u32 {
 
 fn get_month() -> u32 {
     let now = Utc::now();
-    let months = Months {
-        january: 1,
-        february: 2,
-        march: 3,
-        april: 4,
-        may: 5,
-        june: 6,
-        july: 7,
-        august: 8,
-        september: 9,
-        october: 10,
-        november: 11,
-        december: 12,
-    };
 
     let current_month = now.format("%b").to_string();
     let current_month = match current_month.as_str() {
-        "Jan" => months.january,
-        "Feb" => months.february,
-        "Mar" => months.march,
-        "Apr" => months.april,
-        "May" => months.may,
-        "Jun" => months.june,
-        "Jul" => months.july,
-        "Aug" => months.august,
-        "Sep" => months.september,
-        "Oct" => months.october,
-        "Nov" => months.november,
-        "Dec" => months.december,
+        "Jan" => Months::January(1),
+        "Feb" => Months::February(2),
+        "Mar" => Months::March(3),
+        "Apr" => Months::April(4),
+        "May" => Months::May(5),
+        "Jun" => Months::June(6),
+        "Jul" => Months::July(7),
+        "Aug" => Months::August(8),
+        "Sep" => Months::September(9),
+        "Oct" => Months::October(10),
+        "Nov" => Months::November(11),
+        "Dec" =>Months::December(12),
         _ => {
             println!("Couldn't parse month\nPress enter to quit");
             input();
@@ -93,7 +79,24 @@ fn get_month() -> u32 {
         }
     };
     
-    current_month
+    match current_month {
+        Months::January(value) => value,
+        Months::February(value) => value,
+        Months::March(value) => value,
+        Months::April(value) => value,
+        Months::May(value) => value,
+        Months::June(value) => value,
+        Months::July(value) => value,
+        Months::August(value) => value,
+        Months::September(value) => value,
+        Months::October(value) => value,
+        Months::November(value) => value,
+        Months::December(value) => value,
+        _ => {
+            println!("Couldn't parse month\nPress enter to quit");
+            input();
+            panic!("Couldn't parse month")}
+    }
 }
 
 fn get_day() -> u32 {
