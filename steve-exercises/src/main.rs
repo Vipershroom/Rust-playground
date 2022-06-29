@@ -84,6 +84,32 @@ fn is_vowel(char: char) -> bool{
     return false
 }
 
+// Exercise 5
+fn translate(sentence: &str) -> String {
+    let sent_arr = sentence.chars();
+    let mut new_str = String::new();
+    for i in sent_arr {
+        if is_vowel(i.clone()) || i == ' ' {
+            new_str += &i.to_string();
+        } else {
+            new_str += &i.to_string();
+            new_str += "o";
+            new_str += &i.to_string();
+        }
+    }
+    new_str
+}
+
+fn sum(list_of_nums: &[i32]) -> i32 {
+    let mut sum = 0;
+    for i in list_of_nums {
+        sum += i
+    }
+
+    sum
+}
+
 fn main() {
-      
+    let my_vec = [2,4,6];
+    assert_eq!(sum(&my_vec), 12)    
 }
