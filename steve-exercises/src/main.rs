@@ -73,7 +73,17 @@ fn len_test_case() {
     println!("{}", len(&input()))
 }
 
+// Exercise 4
+fn is_vowel(char: char) -> bool{
+    let list_of_vowels = ['a','e', 'i', 'o', 'u'];
+    for i in list_of_vowels {
+        if char == i {
+            return true
+        }
+    }
+    return false
+}
 
 fn main() {
-    len_test_case()   
+      
 }
