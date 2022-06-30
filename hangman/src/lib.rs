@@ -17,6 +17,15 @@ pub fn get_random_word() -> String {
     word_bank[rand_num].to_string()
 }
 
+pub fn gen_underscores(word: String) {
+    let length = word.len();
+    
+    for i in 0..length {
+        print!("_ ")
+    }
+    println!("");
+}
+
 pub fn hangman_state() -> Vec<String> {
     let m = ["+---+
     |   |
