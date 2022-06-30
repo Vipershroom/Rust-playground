@@ -1,13 +1,15 @@
-fn main() {
-    let string1 = String::from("dksflalk;dfs");
-    let string2 = "lsdkfdjngl;ksd";
-    println!("{}", longest(string1.as_str(), string2))
+use std::thread;
+use std::time::Duration;
+
+fn simulated_expensive_calc(intensity: u32) -> u32 {
+    println!("Calculating slowly....");
+    thread::sleep(Duration::from_secs(2));
+    intensity
 }
 
-fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
-    if x.len() > y.len() {
-        x
-    } else {
-        y
-    }
+fn main() {
+    let simulated_intensity = 10;
+    let simulated_random_number = 7;
+
+    generate_workout(simulated_intensity, simulated_random_number)
 }
