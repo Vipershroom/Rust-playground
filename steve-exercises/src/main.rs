@@ -109,7 +109,16 @@ fn sum(list_of_nums: &[i32]) -> i32 {
     sum
 }
 
+fn multi(list_of_nums: &[i32]) -> i32 {
+    let mut multi = 1;
+    for num in list_of_nums {
+        multi *= num
+    }
+
+    multi
+}
+
 fn main() {
     let my_vec = [2,4,6];
-    assert_eq!(sum(&my_vec), 12)    
+    assert_eq!(multi(&my_vec), 48)    
 }
