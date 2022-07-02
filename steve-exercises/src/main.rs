@@ -73,7 +73,52 @@ fn len_test_case() {
     println!("{}", len(&input()))
 }
 
+// Exercise 4
+fn is_vowel(char: char) -> bool{
+    let list_of_vowels = ['a','e', 'i', 'o', 'u'];
+    for i in list_of_vowels {
+        if char == i {
+            return true
+        }
+    }
+    return false
+}
+
+// Exercise 5
+fn translate(sentence: &str) -> String {
+    let sent_arr = sentence.chars();
+    let mut new_str = String::new();
+    for i in sent_arr {
+        if is_vowel(i.clone()) || i == ' ' {
+            new_str += &i.to_string();
+        } else {
+            new_str += &i.to_string();
+            new_str += "o";
+            new_str += &i.to_string();
+        }
+    }
+    new_str
+}
+
+fn sum(list_of_nums: &[i32]) -> i32 {
+    let mut sum = 0;
+    for i in list_of_nums {
+        sum += i
+    }
+
+    sum
+}
+
+fn multi(list_of_nums: &[i32]) -> i32 {
+    let mut multi = 1;
+    for num in list_of_nums {
+        multi *= num
+    }
+
+    multi
+}
 
 fn main() {
-    len_test_case()   
+    let my_vec = [2,4,6];
+    assert_eq!(multi(&my_vec), 48)    
 }
