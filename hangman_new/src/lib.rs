@@ -1,4 +1,4 @@
-use std::io::Write;
+use std::collections::HashSet;
 
 use rand::Rng;
 
@@ -12,11 +12,20 @@ pub fn input() -> String {
 
 pub fn get_random_word() -> String {
     let word_bank = [
-    "houseplan", "present", "Taylor",
-    "Straight", "People", "deviation",
+    "houseplan", "present", "taylor",
+    "straight", "people", "deviation",
     "matrix", "vector", "paramater"];
     let rand_num = rand::thread_rng().gen_range(0..word_bank.len() - 1);
     word_bank[rand_num].to_string()
+}
+
+pub fn compare_two_list(word: &str, vecc: &Vec<char>) -> bool{
+    for i in vecc {
+        if word == i.to_string() {
+            return true
+        }
+    }
+    false
 }
 
 fn hangman_state(state: &usize) -> &'static str {
@@ -52,22 +61,22 @@ fn hangman_state(state: &usize) -> &'static str {
     "+---+
     |    |
     O    |
-   /|\\  |
+   /|\\   |
          |
          |
     =========",
     "+---+
     |    |
     O    |
-   /|\\  |
+   /|\\   |
    /     |
          |
   =========",
     "+---+
     |    |
     O    |
-   /|\\  |
-   / \\  |
+   /|\\   |
+   / \\   |
          |
 ========="];
 
@@ -79,7 +88,7 @@ fn hangman_state(state: &usize) -> &'static str {
 
 
 
-fn gen_underscores(word: &str, right_guess: &Vec<String>) {
+fn gen_underscores(word: &str, right_guess: &HashSet<String>) {
     let mut cond = false;
     for i in word.chars() {
         for j in right_guess {
@@ -89,7 +98,7 @@ fn gen_underscores(word: &str, right_guess: &Vec<String>) {
             }
         }
         if cond == false {
-            print!("_ ")
+            print!(" _ ")
         } else {
             cond = false
         }
@@ -105,16 +114,8 @@ pub fn render_initial_game(state: &usize, word: &str) {
     println!("")
 }
 
-pub fn render_game(state: &usize, word: &str, guess: String, right_guess: &Vec<String>, wrong_guess: &Vec<String>) {
+pub fn render_game(state: &usize, word: &str, right_guess: &HashSet<String>) {
     println!("{}", hangman_state(&state));
     gen_underscores(word, right_guess)
 }
 
-pub fn compare_two_list(word: &str, vecc: &Vec<char>) -> bool{
-    for i in vecc {
-        if word == i.to_string() {
-            return true
-        }
-    }
-    false
-}
