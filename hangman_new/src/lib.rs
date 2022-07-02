@@ -80,10 +80,7 @@ fn hangman_state(state: &usize) -> &'static str {
          |
 ========="];
 
-    println!("{state}");
-
     m[*state]
-
 }
 
 
@@ -103,15 +100,15 @@ fn gen_underscores(word: &str, right_guess: &HashSet<String>) {
             cond = false
         }
     }
-    println!("")
+    println!()
 }
 
 pub fn render_initial_game(state: &usize, word: &str) {
     println!("{}", hangman_state(&state));
-    for i in 0..word.len() {
+    for _i in 0..word.len() {
         print!(" _ ");
     }
-    println!("")
+    println!()
 }
 
 pub fn render_game(state: &usize, word: &str, right_guess: &HashSet<String>) {

@@ -17,18 +17,16 @@ fn main() {
             break;
         }
 
-        
         let guess = input();
 
         if compare_two_list(&guess, &word_arr) {
             guessed_right_words.insert(guess.clone());
         } else {
             guessed_wrong_words.push(guess.clone());
-                println!("HI");
                 state += 1
         }
 
-        render_game(&state, &word, guess, &guessed_right_words, &guessed_wrong_words)
+        render_game(&state, &word, &guessed_right_words)
     }
     // Update the game whenever the user gets a letter wrong or right.
     
