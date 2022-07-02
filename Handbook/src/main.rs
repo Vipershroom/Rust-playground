@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 use std::{env, error::Error, fs};
 use std::process;
 
