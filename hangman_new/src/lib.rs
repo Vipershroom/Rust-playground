@@ -1,5 +1,5 @@
 use std::collections::HashSet;
-
+use std::process;
 use rand::Rng;
 
 pub fn input() -> String {
@@ -29,6 +29,9 @@ pub fn compare_two_list(word: &str, vecc: &Vec<char>) -> bool{
 }
 
 fn hangman_state(state: &usize) -> &'static str {
+    if *state == 7 {
+        return ""
+    }
     let m = [
     "+---+
     |   |
@@ -85,7 +88,11 @@ fn hangman_state(state: &usize) -> &'static str {
 
 
 
-fn gen_underscores(word: &str, right_guess: &HashSet<String>) {
+fn gen_underscores(word: &str, right_guess: &HashSet<String>, state: &usize) {
+    if *state == 7 {
+        return;
+    }
+
     let mut cond = false;
     for i in word.chars() {
         for j in right_guess {
@@ -113,6 +120,20 @@ pub fn render_initial_game(state: &usize, word: &str) {
 
 pub fn render_game(state: &usize, word: &str, right_guess: &HashSet<String>) {
     println!("{}", hangman_state(&state));
-    gen_underscores(word, right_guess)
+    gen_underscores(word, right_guess, &state);
+    if *state == 7 {
+        loss(&word);
+    } else if (HashSet::<char>::from_iter(word.chars().into_iter())).len() == right_guess.len() {
+        win(&word);
+    }
 }
 
+pub fn win(word: &str) {
+    println!("You won, the word was {}", word);
+    process::exit(0)
+}
+
+pub fn loss(word: &str) {
+    println!("You lost, the word was: {}",word );
+    process::exit(0)
+}
