@@ -1,46 +1,33 @@
-use rand::{thread_rng, Rng};
-
-fn input() -> u32 {
-    let mut buff = String::new();
-    loop {
-        buff.clear();
-        std::io::stdin()
-        .read_line(&mut buff)
-        .unwrap();
-        match buff.trim().parse() {
-            Ok(input) => return input,
-            Err(_) => println!("Please enter a positive integer:")
-        }
-    }
-}
-
-fn rand() -> u32 {
-    thread_rng().gen_range(1..=6)
-}
- 
-fn rolls(rollys: u32) -> Vec<u32> {
-    let mut diceList: Vec<u32> = Vec::new();
-    println!("");
-    for i in 0..rollys {
-        let currRoll = rand();
-        diceList.push(currRoll);
-        println!("{currRoll}")
-    }
-    println!("{:?}", diceList);
-    diceList
-}
-
-fn sum(list: Vec<u32>) {
-    let mut sam = 0;
-    for i in list {
-        sam += i;
-    }
-    println!("Your sum is {sam}")
-}
+use std::io::stdin;
+use rand::Rng;
 
 fn main() {
-    println!("Welcome to my dice game! \nPlease enter a number");
-    let x = input();
-    let lisp = rolls(x);
-    sum(lisp);
+    println!("Please enter a number");
+    let n = input();
+    let dice_vec = process_rolls(n);
+    println!("Your rolls are: {:?}", dice_vec);
+    println!("The sum is: {}", sum_rolls(dice_vec))
+}
+
+fn input() -> u32 {
+    let mut buf = String::new();
+
+    stdin().read_line(&mut buf).unwrap();
+
+    match buf.trim().parse() {
+        Ok(input) => return input,
+        Err(_) => panic!("Please enter a positive integer")
+    }
+}
+
+fn roll_dice() -> u32 {
+    rand::thread_rng().gen_range(1..6)
+}
+
+fn process_rolls(n: u32) -> Vec<u32> {
+    (0..n).map(|_| roll_dice()).collect()
+}
+
+fn sum_rolls(n: Vec<u32>) -> u32{
+    n.iter().sum()
 }
