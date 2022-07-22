@@ -3,6 +3,7 @@
 version = 3
 
 [[package]]
+<<<<<<< HEAD
 name = "autocfg"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -439,3 +440,7 @@ version = "0.1.0"
 dependencies = [
  "yew",
 ]
+=======
+name = "yew_test"
+version = "0.1.0"
+>>>>>>> 508c49ab5673a0254db500bd5c3bb0992ac2cace
